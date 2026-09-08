@@ -19,7 +19,7 @@ This project was created as part of the Laravel Environment Setup assignment.
 1. Clone the repository
 
    ```bash
-   git clone https://github.com/2410631250110-ally/library-system.git
+   git clone https://github.com/2410631250110-a11y/library-system.git
    ```
 
 2. Enter the project directory
