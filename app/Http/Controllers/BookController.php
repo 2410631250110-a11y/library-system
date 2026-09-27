@@ -2,46 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
+
 class BookController extends Controller
 {
     public function index()
     {
-        $title = 'Daftar Buku';
-
-        $books = [
-            [
-                'title' => 'Pemrograman PHP',
-                'author' => 'Andi Pratama',
-                'year' => 2021,
-            ],
-            [
-                'title' => 'Laravel untuk Pemula',
-                'author' => 'Budi Santoso',
-                'year' => 2023,
-            ],
-            [
-                'title' => 'Basis Data',
-                'author' => 'Citra Lestari',
-                'year' => 2020,
-            ],
-            [
-                'title' => 'Algoritma dan Pemrograman',
-                'author' => 'Dewi Anggraini',
-                'year' => 2022,
-            ],
-            [
-                'title' => 'Pemrograman Berorientasi Objek',
-                'author' => 'Eko Saputra',
-                'year' => 2024,
-            ],
-        ];
-
-        return view('books.index', compact('title', 'books'));
+        $books = Book::all();
+        return view('books.index', compact('books'));
     }
+
     public function show($id)
     {
-    $title = 'Detail Buku';
+        $title = 'Detail Buku';
 
-    return view('books.show', compact('title', 'id'));
+        return view('books.show', compact('title', 'id'));
     }
 }
