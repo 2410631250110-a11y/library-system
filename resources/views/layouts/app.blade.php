@@ -153,7 +153,6 @@
             <nav aria-label="Navigasi utama">
                 <a href="{{ url('/dashboard') }}">Dashboard</a>
                 <a href="{{ url('/books') }}">Books</a>
-                <a href="{{ url('/books/10') }}">Book Detail</a>
                 <a href="{{ url('/categories') }}">Categories</a>
                 <a href="{{ url('/members') }}">Members</a>
             </nav>
