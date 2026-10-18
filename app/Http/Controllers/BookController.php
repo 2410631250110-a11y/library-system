@@ -20,12 +20,28 @@ class BookController extends Controller
 
     public function store(Request $request)
     {
-        Book::create([
-            'title' => $request->title,
-            'author' => $request->author,
-            'year' => $request->year,
-            'stock' => $request->stock,
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'year' => 'required|integer|min:1900|digits:4',
+            'stock' => 'required|integer|min:0',
+        ], [
+            'title.required' => 'Judul wajib diisi.',
+            'title.string' => 'Judul harus berupa teks.',
+            'title.max' => 'Judul maksimal 255 karakter.',
+            'author.required' => 'Penulis wajib diisi.',
+            'author.string' => 'Penulis harus berupa teks.',
+            'author.max' => 'Penulis maksimal 255 karakter.',
+            'year.required' => 'Tahun wajib diisi.',
+            'year.integer' => 'Tahun harus berupa bilangan bulat.',
+            'year.min' => 'Tahun minimal 1900.',
+            'year.digits' => 'Tahun harus terdiri dari 4 digit.',
+            'stock.required' => 'Stok wajib diisi.',
+            'stock.integer' => 'Stok harus berupa bilangan bulat.',
+            'stock.min' => 'Stok minimal 0.',
         ]);
+
+        Book::create($validated);
 
         return redirect()->route('books.index');
     }
@@ -42,12 +58,28 @@ class BookController extends Controller
 
     public function update(Request $request, Book $book)
     {
-        $book->update([
-            'title' => $request->title,
-            'author' => $request->author,
-            'year' => $request->year,
-            'stock' => $request->stock,
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'year' => 'required|integer|min:1900|digits:4',
+            'stock' => 'required|integer|min:0',
+        ], [
+            'title.required' => 'Judul wajib diisi.',
+            'title.string' => 'Judul harus berupa teks.',
+            'title.max' => 'Judul maksimal 255 karakter.',
+            'author.required' => 'Penulis wajib diisi.',
+            'author.string' => 'Penulis harus berupa teks.',
+            'author.max' => 'Penulis maksimal 255 karakter.',
+            'year.required' => 'Tahun wajib diisi.',
+            'year.integer' => 'Tahun harus berupa bilangan bulat.',
+            'year.min' => 'Tahun minimal 1900.',
+            'year.digits' => 'Tahun harus terdiri dari 4 digit.',
+            'stock.required' => 'Stok wajib diisi.',
+            'stock.integer' => 'Stok harus berupa bilangan bulat.',
+            'stock.min' => 'Stok minimal 0.',
         ]);
+
+        $book->update($validated);
 
         return redirect()->route('books.index');
     }
