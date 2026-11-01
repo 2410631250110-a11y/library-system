@@ -5,6 +5,11 @@
 @section('content')
     <h2>Daftar Buku</h2>
 
+    <form action="{{ route('logout') }}" method="POST">
+        @csrf
+        <button type="submit">Logout</button>
+    </form>
+
     <a href="{{ route('books.create') }}" class="button">Tambah Buku</a>
 
 @foreach($books as $book)
