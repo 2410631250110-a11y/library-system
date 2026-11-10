@@ -155,6 +155,9 @@
                 <a href="{{ url('/books') }}">Books</a>
                 <a href="{{ url('/categories') }}">Categories</a>
                 <a href="{{ url('/members') }}">Members</a>
+                @can('manage-users')
+                    <a href="{{ route('users.index') }}">Kelola Pengguna</a>
+                @endcan
             </nav>
         </div>
     </header>

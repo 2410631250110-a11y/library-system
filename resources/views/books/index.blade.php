@@ -24,11 +24,13 @@
     <a href="{{ route('books.show', $book) }}">Detail</a>
     <a href="{{ route('books.edit', $book) }}">Edit</a>
 
-    <form action="{{ route('books.destroy', $book) }}" method="POST">
-        @csrf
-        @method('DELETE')
+    @can('delete', $book)
+        <form action="{{ route('books.destroy', $book) }}" method="POST">
+            @csrf
+            @method('DELETE')
 
-        <button type="submit">Hapus</button>
-    </form>
+            <button type="submit">Hapus</button>
+        </form>
+    @endcan
 @endforeach
 @endsection
